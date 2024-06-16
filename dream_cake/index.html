@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Cupcake</title> 
+    <!-- Link To CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+   
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo-navbar">
+            <a href="#" class="logo">
+                <img src="SWEETIE CUPCAKE.png" alt="">
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <!-- Menu Icon -->
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <!--Links-->
+        <ul class="navbar">
+            <li><a href="#Home">Beranda</a></li>
+            <li><a href="#Produk">Produk</a></li>
+            <li><a href="#Store">Store</a></li>
+            <li><a href="#Review">Review</a></li>
+            <li><a href="#ComingSoon">Coming Soon</a></li>
+            <li><a href="#MyContact">MyContact</a></li>
+
+        </ul>
+        </div>
+        
+    </header>
+    <!-- Home -->
+    <section class="home" id="Home">
+        <div class="home-text">
+            <h1> Hello Guys! <br> Selamat Datang di DREAM CUPCAKE </h1>
+            <p>Selamat Datang di website toko kue DREAM CUPCAKE</p>
+            <a href="#Produk" class="btn">BUY</a>
+        </div>
+        <div class="home-img">
+            <img src="CUPCAKE 3.png" alt="">
+        </section>
+        
+        <!-- Favorite -->
+        <section class="Produk" id="Produk">
+            <div class="heading">
+                <h2>Produk</h2>
+            </div>
+            <!--Container-->
+            $sql = "SELECT id, nama, harga, img, keterangan FROM makanan WHERE kategori = 1";
+$result = $conn->query($sql);
+?>
+
+            <div class="box">
+                    <div class="card-container">
+                        <?php
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                echo "<div class='card' data-index='" . $row['id'] . "' onclick='openModal(\"" . $row["nama"] . "\", \"data:img/png;base64," . base64_encode($row["img"]) . "\", \"" . $row["keterangan"] . "\", \"" . $row["harga"] . "\")'>";
+                                echo '<img src="data:img/png;base64,'.base64_encode($row['img']).'" width="250" height="250"/>';
+                                echo "<h3 style='text-align: left; margin-left: 10px; font-weight: bolder; font-size: 13px;'>" . $row["nama"] . "</h3>";
+                                echo "<h3 style='text-align: right; margin-top: -14px; margin-right: 18px; font-size: 13px;'>" . $row["harga"] . "</h3>";
+                                echo "</div>";
+                            }
+                        } else {
+                            echo "Tidak ada data.";
+                        }
+                        $conn->close();
+                        ?>
+                    </div>
+        </section>
+
+        <!-- About -->
+        <section class="about" id="Store">
+            <div class="about-img">
+                <img src="store.png" alt="">
+            </div>
+            <div class="about-text">
+                <h2>Toko</h2>
+                <p> Hola cupcakers!</p>
+                <p> Dream Cupcake ini berdiri sejak tahun 2020 dimana pada saat itu adalah masa masa covid yang lagi besar-besarnya. tetapi dengan perjuangan yang telah kami lakukan. Dream Cupcake ini bisa ada hingga sekarang.</p>
+                <p> Nama Dream Cupcake ini terinspirasi dari mimpi owner yang ingin membuat toko cupcakenya sendiri. </p>
+            <a href="https://maps.app.goo.gl/jfGzLmXksKnyjN7Q6" class="btn">View The Store</a>
+            </div>
+        </section>
+
+        <!-- Skill -->
+        <section class="customers" id="Review">
+            <div class="heading">
+                <h2>My Skill</h2>
+            </div>
+            <!--Container-->
+            <div class="customers-container">
+                <div class="box">
+                    <div class="starts">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star' ></i>
+                        <h2>Desain Grafis</h2>
+                        <p> Desain Grafis adalah salah satu keahlian yang aku punya. Aku sangat suka mendesain di apk Canva. Berkat desainku, aku sering mengambil kepanitian bidang PDD </p>
+                        <img src="canva.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="starts">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star-half' ></i>
+                        <h2>Videografi</h2>
+                        <p> Videografi adalah salah satu keahlian yang aku punya. Aku sangat suka mengabadikan moment melalui video. Sehingga momen itu bisa selalu aku kenang </p>
+                        <img src="video1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="starts">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star' ></i>
+                        <h2>Fotografi</h2>
+                        <p> Fotografi adalah salah satu keahlian yang aku punya. Aku sangat suka memotret hal-hal yang bagi aku sangat indah seperti langit dan juga alam </p>
+                        <img src="camera.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="starts">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star-half' ></i>
+                        <h2>Publick Speaking</h2>
+                        <p> Publick Speaking adalah salah satu SoftSkill yang aku miliki ketika aku bergabung dengan organisasi di kampus maupun di luar kampus. </p>
+                        <img src="mic.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="starts">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star' ></i>
+                        <h2>Mudah Beradaptasi</h2>
+                        <p> Ketika aku memasuki organisasi aku berusaha semaksimal mungkin untuk mudah beradaptasi dengan orang baru. Skill ini aku miliki untuk menambah relasi Pertemanan. </p>
+                        <img src="beradaptasi.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="starts">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star' ></i>
+                        <h2>Kreative</h2>
+                        <p> Aku sangat suka menghasilkan ide ide baru dan aku tuangkan langsung kedalam desaign yang aku buat. </p>
+                        <img src="lampu.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="friends" id="ComingSoon">
+            <div class="heading">
+                <h2>Coming Soon Product</h2>
+            </div>
+            <!--Container-->
+            <div class="friends-container">
+                <div class="box">
+                    <img src="CUP 8.jpeg" class="friend" alt="">
+                    <h3>Red Tango</h3>
+                    <div class="content">
+                        <span class="keterangan">.... </span>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="CUP 7.jpeg" class="friend" alt="">
+                    <h3>Blue </h3>
+                    <div class="content">
+                        <span class="keterangan">...</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="CUP 9.jpeg" class="friend" alt="">
+                    <h3>Strawberry Red</h3>
+                    <div class="content">
+                        <span class="keterangan">.... </span>
+                    </div>
+                </div>
+            </section>
+            <!-- Skill -->
+            <section class="contact" id="MyContact">
+                <div class="heading">
+                    <h2>My Contact</h2>
+                </div>
+                <!--Container-->
+                <div class="contact-container">
+                    <div class="box">
+                        <div class="starts">
+                            <h2>WhatsApp</h2>
+                            <a href="https://wa.me/085704108669" class=""><img src="whatsapp.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="starts">
+                            <h2>Instagram</h2>
+                            <a href="https://www.instagram.com/rhimbaaa?igsh=bXBuZTRpZGcxaG94&utm_source=qr" class=""><img src="instagram.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="starts">
+                            <h2>Tiktok</h2>
+                            <a href="https://www.tiktok.com/@1lvyuu?_t=8kB7N2xRs1Q&_r=1" class=""><img src="tiktok.jpg" alt=""></a>
+                        </div>
+                </div>
+</body>
+</html>
